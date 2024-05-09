@@ -21,3 +21,5 @@ This one shows the status
 Get-MpComputerStatus | Select-Object RealTimeProtectionEnabled
 This one disables the realtime monitoring 
 Set-MpPreference -DisableRealtimeMonitoring $true
+
+Get-ItemProperty -Path "Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList\*" | Where-Object -Property ProfileImagePath -clike "C:\Users\t*" | Select-Object -Property PSPath
