@@ -17,5 +17,7 @@ Get-AppxPackage -AllUsers | Where-Object Name -CNotLike "*Microsoft*" | Select-O
 Get-WmiObject -Class Win32_Product| Where-Object Name -CNotLike "*Microsoft*"
 
 Windows defender realtime-protection status
-This one shows the status Get-MpComputerStatus | Select-Object RealTimeProtectionEnabled
-This one disables the realtime monitoring Set-MpPreference -DisableRealtimeMonitoring $true
+This one shows the status 
+Get-MpComputerStatus | Select-Object RealTimeProtectionEnabled
+This one disables the realtime monitoring 
+Set-MpPreference -DisableRealtimeMonitoring $true
