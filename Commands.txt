@@ -1,5 +1,6 @@
 --Lock Screen (Win + L)
 rundll32.exe user32.dll,LockWorkStation
+rundll32.exe powrprof.dll,SetSuspendState Lock
 
 --print svchost.exe with pid
 tasklist /SVC /FI "IMAGENAME eq svchost.exe"
