@@ -38,3 +38,13 @@ function hist {
 
 - create scheduled task via commandline
 sc.exe create "Task Name" binpath= "FilePath" start=auto
+
+on Ubuntu to change the default kernel
+Edit the /etc/default/grub file: sudo nano /etc/default/grub
+Change GRUB_DEFAULT=0 to GRUB_DEFAULT=saved
+Add GRUB_SAVEDEFAULT=true
+Update Grub with: sudo update-grub
+
+on Ubuntu to install the new kernel
+download and install linux-image-<linux_version>.deb
+if it throws error install the dependencies like linux-modules-<linux_version>.deb
