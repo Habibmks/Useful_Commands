@@ -48,3 +48,15 @@ Update Grub with: sudo update-grub
 on Ubuntu to install the new kernel
 download and install linux-image-<linux_version>.deb
 if it throws error install the dependencies like linux-modules-<linux_version>.deb
+
+Show Parent process with powershell - Before run it give desired process Id
+$Id = 
+Get-CimInstance Win32_Process -Filter "ProcessId = $Id" | ForEach-Object { 
+  $Parent = Get-CimInstance Win32_Process -Filter "ProcessId = $($_.ParentProcessId)"
+  [PSCustomObject]@{
+    ProcessId = $_.ProcessId
+    ProcessName = $_.ProcessName
+    ParentId = $_.ParentProcessId
+    ParentName = $Parent.ProcessName
+  } | Format-List | Out-String
+}
