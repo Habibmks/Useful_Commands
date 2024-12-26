@@ -63,3 +63,15 @@ Get-CimInstance Win32_Process -Filter "ProcessId = $Id" | ForEach-Object {
     ParentName = $Parent.ProcessName
   } | Format-List | Out-String
 }
+
+
+List All Services with Actions
+Get-ScheduledTask | ForEach-Object {
+    [PSCustomObject]@{
+        TaskName = $_.TaskName
+        TaskPath = $_.TaskPath
+        State    = $_.State
+        Triggers = (Get-ScheduledTaskInfo -TaskName $_.TaskName -TaskPath $_.TaskPath).NextRunTime
+        Actions  = ($_ | Select-Object -ExpandProperty Actions).Execute
+    }
+} >> services.txt
