@@ -36,23 +36,23 @@ function hist {
   Get-Content (Get-PSReadlineOption).HistorySavePath | ? {$_ -like "*$find*"} | Get-Unique | more 
 }
 
-- create scheduled task via commandline
+--create scheduled task via commandline
 sc.exe create "Task Name" binpath= "FilePath" start=auto
 
-on Ubuntu to change the default kernel
+--on Ubuntu to change the default kernel
 Edit the /etc/default/grub file: sudo nano /etc/default/grub
 Change GRUB_DEFAULT=0 to GRUB_DEFAULT=saved
 Add GRUB_SAVEDEFAULT=true
 Update Grub with: sudo update-grub
 
-on Ubuntu to install the new kernel
+--on Ubuntu to install the new kernel
 download and install linux-image-<linux_version>.deb
 if it throws error install the dependencies like linux-modules-<linux_version>.deb
 
-Ubuntu show users with sudo permission
+--Ubuntu show users with sudo permission
 cat /etc/group | grep sudo
 
-Show Parent process with powershell - Before run it give desired process Id
+--Show Parent process with powershell - Before run it give desired process Id
 $Id = 
 Get-CimInstance Win32_Process -Filter "ProcessId = $Id" | ForEach-Object { 
   $Parent = Get-CimInstance Win32_Process -Filter "ProcessId = $($_.ParentProcessId)"
@@ -65,7 +65,7 @@ Get-CimInstance Win32_Process -Filter "ProcessId = $Id" | ForEach-Object {
 }
 
 
-List All Services with Actions
+--List All Services with Actions
 Get-ScheduledTask | ForEach-Object {
     [PSCustomObject]@{
         TaskName = $_.TaskName
