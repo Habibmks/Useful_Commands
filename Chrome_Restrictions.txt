@@ -1,0 +1,24 @@
+- To Manage Chrome Settings via Group Policy Settings
+    First Chrome Management Policy needs to be added to Group Policy Settings (https://support.google.com/chrome/a/answer/187202?hl=en)
+    After policy settings added it can be found under "Administrative Templates > Google > Google Chrome"
+
+- To Manage Chrome Extensions
+    Under "Administrative Templates > Google > Google Chrome > Extensions" settings "Extension management settings" can be edited to allow or block extensions
+    Example Json Data is 
+    {
+        "*": { //This includes all extensions
+            "installation_mode": "blocked"
+        },
+        "Extension_ID": {
+            "installation_mode": "force_installed",
+            "update_url": "https://clients2.google.com/service/update2/crx"
+        },
+        "Extension_ID": {
+            "installation_mode": "normal_installed",
+            "update_url": "https://clients2.google.com/service/update2/crx"
+        },
+        "Extension_ID": {
+            "installation_mode": "allowed"
+        }
+    }
+Resource : https://support.google.com/chrome/a/answer/7532015#zippy=%2Cset-installation-policies-automatically-install-force-install-allow-or-block
